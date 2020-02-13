@@ -54,21 +54,29 @@ footer{
 Keyframes for animation*/
 
 @-webkit-keyframes logo_wiggle{
-
+  0% {width: 25px;}
+  100% {width: 420px;}
 }
 
 @keyframes logo_wiggle{
-
+  /*Animate the logo class with keyframes.   
+  It should start at a width of  25px  and grow to 420px.  */
+  0% {width: 25px;}
+  100% {width: 420px;}
 } 
 
 #logo{
-  
+  /* The animation should last 3 seconds and not-repeat.*/
+  -webkit-animation: logo_wiggle 3s none;
+  animation: logo_wiggle 3s none ;
 }
 
 /* Cards! */
 .pricing{
     min-height: 500px;
     display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-content: center;
     justify-content: center;
 }
@@ -91,6 +99,7 @@ Keyframes for animation*/
 .card > ul{
   list-style: none;
   padding: 0;
+
 }
 
 .card > ul li {
@@ -123,8 +132,13 @@ Keyframes for animation*/
 /* Gallery! */
 
 .gallery{
-  
+  /* Gallery - edit display*/
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
   min-height: 600px;
+  
 }
 
 .gallery > img{
@@ -135,14 +149,21 @@ Keyframes for animation*/
 
 /* Navbar */
 header{
-  
+  display:flex;
+  flex-direction: column;
   background: #fff;
   border-bottom: 3px solid #50C7C7;
+  align-items: center;
 }
 
 .nav_links{
- 
+  /* with each link on its own line.   */
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   list-style: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav_item a{
@@ -157,11 +178,17 @@ header{
           text-decoration-style: dotted;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  #logo {
+    animation: none;
+  }
+}
+
 @media screen and (min-width: 850px){
 
   /* Cards! */
   .card {
-    
+    flex-basis: 250px;
   }
 
   .card_big{
@@ -172,22 +199,56 @@ header{
   /* Navbar */
 
   header{
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .nav_links{
-    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
   }
 
   .nav_item a{
     padding: 10px;
   }
+
+ @media (prefers-reduced-motion: reduce) {
+    #logo {
+      animation: none;
+    }
+  }
+
 }
 
 @media print { 
   
+  body{
+    background-image: none;
+  }
+
   .card {
     flex-basis: 200px;
   }
+
+  .pricing{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: top;
+  }
+  
+  .gallery{
+    /* Gallery - edit display*/
+    display:none;
+
+  }
+
+  #gallery{
+    display:none;
+  }
+  
 
 }
